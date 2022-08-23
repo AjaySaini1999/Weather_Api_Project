@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content_wrapper" id="app">
+	<div v-if="infos.city">
+		<h1>
+			Weather
+			<div class="date"></div>
+		</h1>
+		<form method="get">
+			<input name="city" class="form-contorl">
+			<button type="submit">Submit</button>
+		</form>
+
+		<div class="weather_card">
+			<div class="weather_card_img" :style="{backgroundImage: http://openweathermap.org/img/wn/{{data.icon}}.png}">
+				<div class="weather_card_state">
+					<span class="material-icons">
+						<img src="http://openweathermap.org/img/wn/{{data.icon}}.png" alt="">
+					</span>
+				</div>
+			</div>
+
+			<div class="weather_card_infos">
+				<div class="weather_card_infos_title">
+					{{data.city}}	
+					<br>
+					{{data.description}}
+				</div>
+				<div class="weather_card_infos_temp">
+					{{data.celcius_temperature}} °C / {{data.kelvin_temperature}} °F
+				</div>
+				<div class="bottom">
+					<hr>
+					<div class="weather_card_infos_bottom">
+						humidity: {{data.humidity}} - pressure: {{data.pressure}}
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
